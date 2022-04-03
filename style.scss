@@ -1,0 +1,1070 @@
+//colors
+$yelloColor : #FFA304;
+$darkColor : #333231;
+$tansistion: all .5s ease-in-out;
+@mixin flexRow($justifyContent) {
+    display: flex;
+    align-items: center;
+    justify-content: $justifyContent;
+}
+@mixin flexColumn($justifyContent) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: $justifyContent;
+}
+@mixin titles {
+    background-color: #FFECCC;
+    padding: 1px 12px;
+    border-radius: 5px;
+    font-size: 40px;
+    color: $yelloColor;
+}
+@mixin mainButton {
+    border: none;
+    padding: 15px 15px;
+    color: white;
+    background-color: $yelloColor;
+    border-radius: 10px;
+    transition: $tansistion;
+    font-size: 15px;
+    cursor: pointer;
+    &:hover {
+        opacity: .5;
+    }
+}
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    @include flexRow(space-around);
+    background-color: $darkColor;
+    position: fixed;
+    top: 0%;
+    z-index: 999999;
+    width: 100%;
+    height: 80px;
+    color: white;
+    .sectionOne{
+        width: 10%;
+        @include flexRow(center);
+        h2{
+            font-size: 33px;
+            span {
+                color: $yelloColor;
+            }
+        }
+    }
+    .sectionTwo {
+        width: 50%;
+        ul {
+            list-style: none;
+            @include flexRow(space-around);
+            li {
+                font-size: 17px;
+            }
+            a {
+                text-decoration: none;
+                color: white;
+                transition: $tansistion;
+                &:hover {
+                    opacity: .5;
+                    color: $yelloColor
+                }
+            }
+        }
+    }
+    .sectionThree {
+        @include flexRow(space-around);
+        width: 15%;
+        svg {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transition: $tansistion;
+            &:hover {
+                color: $yelloColor;
+            }
+        }
+    }
+    .searchBar {
+        height: 0;
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        background-color: $darkColor;
+        top: 100%;
+        border-top: 1px solid $yelloColor;
+        transition: $tansistion;
+        @include flexRow(center);
+        input {
+            width: 70%;
+            height: 40px;
+            border: 1px solid black;
+            border-radius: 5px;
+            text-indent: 10px;
+            &:focus {
+                outline: none;
+            }
+        }
+        svg {
+            width: 32px;
+            height: 32px;
+            margin-left: 2%;
+            cursor: pointer;
+            transition: $tansistion;
+            &:hover {
+                color: $yelloColor;
+            }
+        }
+    }
+}
+.hero {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding-top: 80px;
+    position: relative;
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .heroElem {
+        @include flexColumn(space-around);
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        z-index: 999;
+        top: 35%;
+        left: 24%;
+        color: white;
+    }
+    h1 {
+        margin: 0;
+        font-size: 40px;
+    }
+    h2 {
+        margin: 0;
+        font-size: 25px;
+    }
+    button {
+        @include mainButton();
+    }
+    .bulletsContainer {
+        background-color: $darkColor;
+        border-radius: 20px;
+        width: 30%;
+        opacity: .9;
+        height: 50px;
+        @include flexRow(space-around);
+        .bullet {
+            padding: 15px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: $tansistion;
+            &:hover {
+                opacity: .5;
+            }
+        }
+        .active {
+            background-color: $yelloColor;
+        }
+    }
+}
+.bookSection {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding-top: 80px;
+    @include flexColumn(space-around);
+    span {
+      @include titles();
+    }
+    .lastLetter {
+        margin-right: 40px;
+    }
+    .bookContainer{
+        width: 90%;
+        height: 80%;
+        @include flexRow(flex-start);
+        .sectionOne {
+            width: 50%;
+            height: 100%;
+           
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .sectionTwo{
+            width: 50%;
+            height: 100%;
+            box-shadow: 4px 3px 14px 6px rgba(237,223,223,0.72);
+            form {
+                @include flexColumn(space-between);
+                align-items: flex-start;
+                width: 100%;
+                
+                
+                label{
+                    font-weight: bold;
+                    font-size: 21px;
+                    margin: 5px 0 5px 20px;
+                    color: rgba(107, 106, 106, .6);
+                }
+                input {
+                    width: 80%;
+                    height: 40px;
+                    margin: 5px 0 20px 40px;
+                    font-size: 20px;
+                    color: black;
+                    opacity: .8;
+                    &:focus {
+                        outline: none;
+                    }
+                 
+                }
+                input[type=number]::-webkit-inner-spin-button, 
+                input[type=number]::-webkit-outer-spin-button {
+                    -webkit-appearance: none; 
+                    margin: 0; 
+                }
+                input:last-child{
+                    @include mainButton();
+                    width: 40%;
+                    margin-top: 0;
+                    font-size: 20px;
+                    padding: 0
+                }
+            }
+        }
+    }
+}
+
+.packages{
+    width: 100%;
+    height: calc(200vh - 80px);
+    padding-top: 80px;
+    @include flexColumn(space-around);
+    h2 span {
+        @include titles();
+    }
+    .packages-container {
+        height: 85%;
+        width: 95%;
+
+        @include flexRow(space-between);
+        flex-wrap: wrap;
+        .package-item {
+            @include flexColumn(space-between);
+            align-items: flex-start;
+            box-shadow: 4px 3px 14px 6px rgba(237,223,223,0.72);
+            width: 30%;
+            height: 45%;
+            img {
+                width: 100%;
+                height: 50%;
+                object-fit: cover;
+            }
+            h2 {
+                @include flexRow(flex-start);
+                margin: 0 0 0 5%;
+                color: $darkColor;
+                padding: 0;
+                svg {
+                    color: $yelloColor;
+                }
+            }
+            p {
+                color: #938484;
+                margin-left: 5%;
+                width: 95%;
+            }
+            h3 {
+                margin: 0 0 0 5%;
+                color: #938484;
+                font-weight: 200;
+                color: $darkColor;
+                span {
+                    text-decoration: line-through;
+                    margin-left: 15px;
+                    color: #938484;
+                    
+                }
+            }
+            button {
+                @include mainButton();
+                margin: 0 0 2% 5%;
+                padding: 15px 30px;
+                border-radius: 5px;
+                &:hover {
+                    background-color: white;
+                    color: $yelloColor;
+                    border: 1px solid $yelloColor;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+.services {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding-top: 80px;
+    @include flexColumn(space-around);
+    h2 span {
+        @include titles();
+    }
+    .services-container {
+        width: 100%;
+        height: 80%;
+        @include flexRow(space-around);
+        flex-wrap: wrap;
+        .service {
+            @include flexColumn(space-around);
+            width: 30%;
+            height: 50%;
+            svg {
+                width: 80px;
+                height: 80px;
+                color: $yelloColor;
+            }
+            h3{
+                color: $darkColor;
+            }
+            p {
+                width: 80%;
+                text-align: center;
+                color: #938484;
+            }
+        }
+    }
+}
+.gallerySection {
+    width: 100%;
+    height: calc(150vh - 80px);
+    padding-top: 80px;
+    @include flexColumn(space-around);
+    h2 span {
+        @include titles();
+    }
+    .gallery-container {
+        width: 95%;
+        height: 80%;
+        @include flexRow(space-around);
+        flex-wrap: wrap;
+    }
+    .galleryItem{
+        position: relative;
+        width: 30%;
+        @include flexRow(center);
+        box-shadow: 4px 3px 14px 6px rgba(237,223,223,0.72);
+        height: 30%;
+     cursor: pointer;
+        &:hover {
+            .galleryLayout {
+                height: 100%;
+                opacity: 1;
+            }
+        }
+        .galleryLayout {
+            @include flexColumn(flex-start);
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            height: 0%;
+            width: 100%;
+            transition: $tansistion;
+            background-color: #33323180;
+            z-index: 9999;
+            h2 {
+                color: $yelloColor;
+            }
+            p{
+                font-size: 13px;
+                color: silver;
+                width: 80%;
+                text-align: center;
+            }
+            button {
+                @include mainButton();
+                &:hover {
+                    background-color: white;
+                    border: 1px solid $yelloColor;
+                    color: $yelloColor;
+                    opacity: 1;
+                }
+            }
+        }
+        img {
+            width: 95%;
+            height: 95%;
+            object-fit: cover;
+        }
+    }
+}
+.review {
+    @include flexColumn(space-around);
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding-top: 80px;
+    overflow-x: hidden;
+    h2 span {
+        @include titles();
+    }
+    .reivew-container {
+        @include flexRow(flex-start);
+        width: 80%;
+        height: 80%;
+        overflow-X: hidden;
+        scroll-behavior: smooth;
+        .review-section {
+            width: 300vh;
+            height: 90%;
+            @include flexRow(space-around);
+            .review-item {
+                margin: 0 40px;
+                width: 70vh;
+                height: 100%;
+                box-shadow: 4px 3px 14px 6px rgba(237,223,223,0.72);
+                @include flexColumn(flex-start);
+                img{
+                    border-radius: 50%;
+                    object-fit: cover;
+                    width: 200px;
+                    height: 200px;
+                }
+                h3 {
+                    color: $darkColor;
+                }
+                p {
+                    text-align: center;
+                    width: 80%;
+                }
+            }
+        }
+
+    }
+}
+.brand {
+    height: 30vh;
+    width: 100%;
+    @include flexRow(space-around);
+    img {
+        width: 13%;
+        height: 40%;
+        object-fit: cover;
+    }
+}
+footer {
+    width: 100%;
+    height: 60vh;
+    background-color: $darkColor;
+    @include flexRow(space-around);
+   
+    div {
+        width: 22%;
+        height: 60%;
+        @include flexColumn(space-between);
+        align-items: start;
+        h2 {
+            color: silver;
+            height: 20%;
+            color: $yelloColor;
+            opacity: .7;
+        }
+        p {
+            width: 90%;
+            color: silver
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            color: silver;
+            li {
+                margin-bottom: 20px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    text-decoration: none;
+                    color: white;
+                    transition: $tansistion;
+                    &:hover {
+                        opacity: .5;
+                    }
+                }
+                svg {
+                    width: 32px;
+                    height: 32px;
+                    color: white;
+                    cursor: pointer;
+                    transition: $tansistion;
+                    &:hover {
+                        color: $yelloColor;
+                    }
+                }
+            }
+        }
+    }
+}
+.logIn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: #00000080;
+    z-index: 999999;
+    overflow: hidden;
+    svg {
+        width: 60px;
+        height: 60px;
+        color: white;
+        position: absolute;
+        top: 2%;
+        right: 2%;
+        cursor: pointer;
+        transition: $tansistion;
+        &:hover {
+            color: $yelloColor;
+        }
+    }
+    .logIn-Moudle {
+        width: 35%;
+        height: 52%;
+        background-color: white;
+        position: absolute;
+        top: 30%;
+        left: 32%;
+        @include flexColumn(flex-start);
+        h2 {
+            color: $darkColor;
+        }
+        form {
+            width: 100%;
+            @include flexColumn(flex-start);
+            input {
+                width: 80%;
+                margin-bottom: 20px;
+                height: 40px;
+                &:nth-child(3) {
+                    @include mainButton();
+                    padding: 0;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+            .mmbr {
+                input {
+                    width: 10%;
+                    height: 20px;
+                    margin-bottom:  0;
+                }
+                @include flexRow(flex-start);
+                width: 80%;
+                height: 20px;
+            }
+        }
+        aside {
+            width: 80%;
+            margin-top: 20px;
+            &:last-child {
+                margin-top: 5px;
+            }
+            a {
+                color: $yelloColor;
+            }
+        }
+    }
+}
+@media (max-width: 900px) {
+    nav {
+        
+        .sectionOne{
+            width: 10%;
+            h2{
+                font-size: 28px;
+            }
+        }
+        .sectionTwo {
+            width: 65%;
+
+            ul {
+                margin: 0;
+                padding: 0;
+                li {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .hero {
+
+        .heroElem {
+            width: 100%;
+            top: 32%;
+            left: 1%;
+        }
+        h1 {
+            font-size: 40px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 25px;
+            text-align: center;
+        }
+        button {
+            padding: 20px 20px;
+            font-size: 20px;
+        }
+        .bulletsContainer {
+            width: 40%;
+        }
+    }
+    .bookSection {
+        span {
+          font-size: 30px;
+        }
+        .lastLetter {
+            margin-right: 20px;
+        }
+        .bookContainer{
+            width: 100%;
+            .sectionOne {
+                width: 40%;
+                img{
+                    width: 100%;
+                }
+            }
+            .sectionTwo{
+                width: 60%;
+                height: 90%; 
+            }
+        }
+    }
+    .packages{
+        height: 200vh;
+        h2 span {
+            font-size: 30px;
+        }
+        .packages-container {
+            width: 95%;
+            .package-item {
+                width: 48%;
+                height: 30%;
+            }
+        }
+    }
+    .services {
+        h2 span {
+            font-size: 30px;
+        }
+        .services-container {
+            .service {
+                svg {
+                    width: 60px;
+                    height: 60px;
+                }
+                p {
+                    width: 90%;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .gallerySection {
+        h2 span {
+            @include titles();
+            font-size: 30px;
+        }
+        .gallery-container {
+            width: 100%;
+        }
+        .galleryItem{
+            position: relative;
+         cursor: pointer;
+            .galleryLayout {
+
+                h2 {
+                    color: $yelloColor;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .review {
+        height: 120vh;
+        h2 span {
+            @include titles();
+            font-size: 30px;
+        }
+        .reivew-container {
+            width: 100%;
+            height: 100%;
+            .review-section {
+                width: 100%;
+                @include flexColumn(flex-start);
+                .review-item {
+                    width: 100%;
+                    border-bottom: 1px solid $yelloColor;
+                    @include flexColumn(center);
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    img{
+                        width: 66px;
+                        height: 66px;
+                    }
+                }
+            }
+        }
+    }
+    .brand {
+        img {
+            width: 12%;
+            height: 35%;
+        }
+    }
+    .logIn {
+        svg {
+            top: 10%;
+        }
+        .logIn-Moudle {
+            width: 50%;
+            left: 25%;
+        }
+    }
+}
+
+
+
+@media (max-width: 650px) {
+    nav {
+        @include flexRow(center);
+        .sectionOne {
+            width: 60%;
+            height: 100%;
+            @include flexRow(space-between); 
+            svg {
+                display: block !important;
+                width: 44px;
+                height: 44px;
+            }
+        }
+        .sectionTwo {
+            width: 50%;
+            transition: $tansistion;
+            height: 50vh;
+            position: absolute;
+            color: $darkColor;
+            z-index: 99999999;
+            left: -50%;
+            top: 120%;
+            background-color: $darkColor;
+            border-radius: 0 20px 20px 0;
+            ul {
+                width: 60%;
+                height: 80%;
+                text-align: left;
+                list-style: none;
+                padding: 0;
+                margin: 15% 0 0 10%;
+                @include flexColumn(space-around);
+                align-items: flex-start;
+                li {
+                    font-size: 22px;
+                    padding: 0;
+                    margin: 0;
+                }
+                a {
+                    text-decoration: none;
+                    color: white;
+                    transition: $tansistion;
+                    &:hover {
+                        opacity: .5;
+                        color: $yelloColor
+                    }
+                }
+            }
+            .sidebarClose {
+                display: block !important;
+                color: white;
+                position: absolute;
+                width: 32px;
+                height: 32px;
+                right: 1%;
+                top: 2%;
+            }
+        }
+        .sectionThree {
+            width: 30%;
+            height: 100%;
+        }
+
+    }
+    .hero {
+        width: 100%;
+        height: calc(100vh - 80px);
+        padding-top: 80px;
+        position: relative;
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .heroElem {
+            @include flexColumn(space-around);
+            align-items: center;
+            width: 95%;
+
+            top: 30%;
+            left: 0%;
+            h1 {
+                font-size: 35px;
+                width: 90%;
+                text-align: center;
+            }
+            h2 {
+                font-size: 18px;
+                width: 90%;
+                text-align: center
+            }
+        }
+        .bulletsContainer {
+            width: 60%;
+        }
+    }
+    .bookSection {
+        h2 {
+            width: 80%;
+        }
+        span {
+          @include titles();
+          font-size: 20px;
+          padding: 1px 7px;
+
+        }
+        .lastLetter {
+            margin-right: 8px;
+        }
+        .bookContainer{
+            width: 100%;
+            height: 80%;
+            @include flexColumn(flex-start);
+            .sectionOne {
+                width: 80%;
+                height: 35%;
+            }
+            .sectionTwo{
+                width: 100%;
+                height: 65%;
+                form {
+                    label{
+                        font-size: 15px;
+                        margin: 5px 0 5px 20px;
+                    }
+                    input {
+                        height: 35px;
+                        margin: 5px 0 15px 30px;
+                    }
+                }
+            }
+        }
+    }
+    .packages{
+        height: 400vh;
+        @include flexColumn(flex-start);
+        h2 {
+            span {
+                @include titles();
+                font-size: 20px;
+                padding: 1px 7px;
+            }
+        } 
+        .packages-container {
+            flex-wrap: wrap;
+            .package-item {
+                width: 100%;
+                margin-bottom: 20px;
+                height: 18.5%;
+            }
+        }
+    }
+    .services {
+
+        height: 130vh;
+        h2 span {
+            font-size: 20px;
+            padding: 1px 7px;
+        }
+        .services-container {
+            .service {
+                width: 45%;
+                height: 33%;
+                margin-bottom: 20px;
+                svg {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                p {
+                    width: 95%;
+                }
+            }
+        }
+    }
+    .gallerySection {
+        height: 80vh;
+        h2 span {
+            font-size: 20px;
+            padding: 1px 7px;
+        }
+        .gallery-container {
+            width: 95%;
+            height: 80%;
+            overflow-x: scroll;
+            @include flexRow(flex-start);
+            align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+        .galleryItem{
+            width: 400px !important;
+            height: 100% !important;
+            margin-left: 10px;
+            &:hover {
+                .galleryLayout {
+                    height: 100%;
+                    opacity: 1;
+                }
+            }
+            .galleryLayout {
+                @include flexColumn(center);
+                h2 {
+                    font-size: 30px;
+                }
+                p{
+                    font-size: 20px;
+                }
+                button {
+                    @include mainButton();
+                    padding: 25px;
+                    font-size: 20px;
+                }
+            }
+            img {
+                width: 350px !important;
+                height: 100% ;
+                object-fit: cover;
+            }
+        }
+    }
+    .review {
+        height: 120vh;
+        h2 span {
+            @include titles();
+            font-size: 20px;
+            padding: 1px 7px;
+        }
+        .reivew-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .review-section {
+                width: 100%;
+                overflow: hidden;
+                @include flexColumn(flex-start);
+                .review-item {
+                    width: 100%;
+                    border-bottom: 1px solid $yelloColor;
+                    @include flexColumn(center);
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    img{
+                        width: 66px;
+                        height: 66px;
+                    }
+                }
+            }
+        }
+    }
+    .brand {
+        height: 40vh;
+        width: 100%;
+        border-top: 1px solid $yelloColor;
+        @include flexRow(space-around);
+        flex-wrap: wrap;
+        img {
+            width: 26%;
+            height: 40%;
+            object-fit: cover;
+        }
+    }
+   
+    footer {
+        width: 100%;
+        height: 60vh;
+        padding-bottom: 10vh;
+        background-color: $darkColor;
+        @include flexRow(space-around);
+        flex-wrap: wrap;
+        div {
+            width: 40%;
+            height: 40%;
+            @include flexColumn(flex-start);
+            align-items: start;
+            h2 {
+                height: 20%;
+                font-size: 18px;
+            }
+            p {
+                width: 90%;
+                color: silver
+            }
+        }
+        .sectionFour ul {
+            @include flexRow(flex-start);
+            width: 100%;
+            height: 40px;
+            li {
+                margin: 0 10px 0 0;
+                padding: 0;
+            }
+        }
+    }
+    .logIn {
+        svg {
+            top: 9%;
+        }
+        .logIn-Moudle {
+            width: 80%;
+            left: 10%;
+            form {
+                input {
+                    width: 90%;
+                    margin-bottom: 30px;
+                    &:nth-child(3) {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            aside {
+                margin-top: 30px;
+                &:last-child {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
